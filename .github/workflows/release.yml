@@ -1,5 +1,8 @@
 name: Create Release
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
@@ -14,20 +17,24 @@ jobs:
 
     # Add steps to build/test your project here
 
-    - name: List bin directory
-      run: ls -al ./bin
-
     - name: Run bundle script
       run: ./scripts/bundle_all.sh
 
-    - name: Zip ChiliKeys.app
-      run: zip -r Install.app.zip ./bin/Install.app
+    - name: Ensure Executable Permissions
+      run: |
+        chmod +x ChiliKeys.app/Contents/MacOS/*
+        chmod +x ChiliKeys.app/Contents/Resources/scripts/*
     
+    - name: Zip ChiliKeys.app
+      run: |
+        cd bin
+        zip -r ../ChiliKeys.app.zip ChiliKeys.app
+        
     - name: Read Changelog
       id: changelog
       run: |
-        echo "##[set-output name=body;]$(cat CHANGELOG.md)"
-
+        echo "::set-output name=body::$(cat CHANGELOG.md)"
+      
     - name: Create Release
       id: create_release
       uses: softprops/action-gh-release@v1
