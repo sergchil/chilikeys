@@ -15,7 +15,7 @@ jobs:
     # Add steps to build/test your project here
 
     - name: Run bundle script
-      run: ../../scripts/bundle_all.sh
+      run: ./scripts/bundle_all.sh
 
     - name: Read Changelog
       id: changelog
@@ -26,7 +26,7 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        files: ../../bin/Install.app # specify files to include in the release
+        files: ./bin/Install.app # specify files to include in the release
         body: ${{ steps.changelog.outputs.body }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
