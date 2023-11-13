@@ -20,6 +20,9 @@ jobs:
     - name: Run bundle script
       run: ./scripts/bundle_all.sh
 
+    - name: Zip ChiliKeys.app
+      run: zip -r Install.app.zip ./bin/Install.app
+    
     - name: Read Changelog
       id: changelog
       run: |
@@ -29,7 +32,8 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        files: ./bin/Install.app # specify files to include in the release
-        body: ${{ steps.changelog.outputs.body }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       files: ChiliKeys.app.zip
+       body: ${{ steps.changelog.outputs.body }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
