@@ -1,35 +1,49 @@
 name: Create Release
-
 permissions:
   contents: write
-
 on:
   push:
     tags:
-      - '*'
-
+      - "v*.*.*"
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  Release:
+    runs-on: macos-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Add steps to build/test your project here
-
-      - name: Run bundle script
-        run: ./scripts/bundle_all.sh
-
-      - name: Read Changelog
-        id: changelog
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install create-dmg
         run: |
-          echo "::set-output name=body::$(cat CHANGELOG.md)"
+          brew install create-dmg
+      - name: Create Layouts Archive
+        run: |
+          zip ChiliKeys-${{ github.ref_name }}.zip layouts/ChiliKeys.icns layouts/ChiliKeys.keylayout
+      - name: Create DMG
+        run: |
+          create-dmg \
+          --volname 'ChiliKeys Installer' \
+          --volicon 'layouts/ChiliKeys.icns' \
+          --window-size 500 300 \
+          'ChiliKeys Installer ${{ github.ref_name }}.dmg' \
+          layouts/
+      - name: Calculate SHA
+        id: calculate_sha
+        run: |
+          file=ChiliKeys-${{ github.ref_name }}.zip
+          hash=$(shasum -a 256 "$file" | cut -d ' ' -f 1)
 
+          echo "sha256=$hash" >> $GITHUB_OUTPUT
+      - name: Update Cask File
+        run: |
+          sed -i'' -e 's/sha256 ""/sha256 "${{ steps.calculate_sha.outputs.sha256 }}"/g' chilikeys.rb
       - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
-          files: bin/ChiliKeys.app
-          body: ${{ steps.changelog.outputs.body }}
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            ChiliKeys-${{ github.ref_name }}.zip
+            ChiliKeys Installer ${{ github.ref_name }}.dmg
+      - name: Commit Cask File
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: chilikeys.rb
+          commit_message: Update Cask file for ${{ github.ref_name}}
+          branch: main
