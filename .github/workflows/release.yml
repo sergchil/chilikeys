@@ -34,18 +34,16 @@ jobs:
           echo "sha256=$hash" >> $GITHUB_OUTPUT
       - name: Update Cask File
         run: |
-          sed -i'' -e 's/sha256 ""/sha256 "${{ steps.calculate_sha.outputs.sha256 }}"/g' chilikeys.rb
+          sed -i'' -e 's/sha256 ""/sha256 "${{ steps.calculate_sha.outputs.sha256 }}"/g' Formula/chilikeys.rb
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             ChiliKeys-${{ github.ref_name }}.zip
             ChiliKeys Installer ${{ github.ref_name }}.dmg
-      - name: Push Cask File to Tap
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add chilikeys.rb
-          git commit -m "Update Cask file for ${{ github.ref_name }}"
-          git remote add tap https://github.com/sergchil/homebrew-chilikeys
-          git push tap main
+      - name: Commit Cask File
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: Formula/chilikeys.rb
+          commit_message: Update Cask file for ${{ github.ref_name}}
+          branch: main
