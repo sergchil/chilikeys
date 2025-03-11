@@ -1,27 +1,64 @@
-# ChiliKeys
+# ChiliKeys 🎮
+> Armenian and Russian phonetic keyboard layouts for macOS, inspired by KDWin
 
-Armenian and Russian phonetic keyboard layout (KDWin style) for macOS.
+![Keyboard Layouts](assets/keyboards.png)
 
-## Installation
+## ✨ Key Features
 
-### Homebrew
+🔤 **Phonetic Layouts**
+- Armenian and Russian layouts following KDWin style
+- Familiar typing experience for KDWin users
 
-🚀 One-Step Installation
+⚡ **Quick Language Switch**
+- Hold **Option** key for instant English access
+- Hold **Option** + **Shift** to access Special Characters like Parentheses ( )
+- Perfect for mixed-language typing
 
+## 🚀 Quick Install
 
-```shell
-brew tap sergchil/chilikeys https://github.com/sergchil/chilikeys && brew update && brew install chilikeys
+```bash
+brew tap sergchil/chilikeys https://github.com/sergchil/chilikeys && brew install chilikeys
 ```
 
-🗑️ Uninstalling Chilikeys
+## 📖 Installation Options
 
-```shell
-brew uninstall chilikeys && brew untap sergchil/chilikeys
-```
+<details>
+<summary>📦 Homebrew (Recommended)</summary>
 
-### DMG
+1. Install with Homebrew:
+   ```bash
+   brew tap sergchil/chilikeys https://github.com/sergchil/chilikeys
+   brew install chilikeys
+   ```
 
-1. Go to the [Releases page](https://github.com/sergchil/chilikeys/releases)
-2. Download the latest version of the `.dmg` Apple Disk Image
-3. Double-click on the `.dmg` file to mount it
-4. Drag the contained files into `~/Library/Keyboard\ Layouts/`
+2. To uninstall:
+   ```bash
+   brew uninstall chilikeys
+   brew untap sergchil/chilikeys
+   ```
+</details>
+
+<details>
+<summary>💿 Manual Installation (DMG)</summary>
+
+1. Download [latest release](https://github.com/sergchil/chilikeys/releases)
+2. Open the DMG file
+3. Copy bundles to `~/Library/Keyboard Layouts/`
+4. Restart your Mac
+</details>
+
+## 🛠️ For Developers
+
+<details>
+<summary>Release Process</summary>
+
+1. Run version bump script:
+   ```bash
+   ./bump_version.sh
+   ```
+   - Use ↑/↓ to choose version
+   - Press Enter to select
+   - Confirm with 'y'
+
+2. GitHub Actions will handle the release automatically
+</details>
