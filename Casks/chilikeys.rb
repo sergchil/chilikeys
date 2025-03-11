@@ -12,19 +12,21 @@ cask "chilikeys" do
     strategy :github_latest
   end
 
-  artifact "ChiliKeys.keylayout",
-           target: "#{Dir.home}/Library/Keyboard Layouts/ChiliKeys.keylayout"
+  artifact "chilikeys_armenian.bundle",
+           target: "#{Dir.home}/Library/Keyboard Layouts/chilikeys_armenian.bundle"
 
-  artifact "ChiliKeys.icns",
-           target: "#{Dir.home}/Library/Keyboard Layouts/ChiliKeys.icns"
+  artifact "chilikeys_russian.bundle",
+           target: "#{Dir.home}/Library/Keyboard Layouts/chilikeys_russian.bundle"
 
   zap trash: [
-    "~/Library/Keyboard Layouts/ChiliKeys.icns",
-    "~/Library/Keyboard Layouts/ChiliKeys.keylayout"
+    "~/Library/Keyboard Layouts/chilikeys_armenian.bundle",
+    "~/Library/Keyboard Layouts/chilikeys_russian.bundle"
   ]
 
   caveats <<~EOS
-    After installing, open System Settings -> Keyboard -> Input Sources,
-    and add "ChiliKeys" from the list. Enjoy your custom layout!
+    To activate the keyboard layout:
+      1. Open System Settings → Keyboard → Input Sources
+      2. Click "+" and find "chilikeys_armenian" and chilikeys_russian in the list
+      3. Select them and restart(Recomended) your Mac for the changes to take effect
   EOS
 end

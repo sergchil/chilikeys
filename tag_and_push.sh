@@ -13,10 +13,10 @@ read -p "Enter the new tag name: " new_tag
 version_number=$(echo "$new_tag" | sed 's/^v//')
 
 # Update the cask file with the new version
-sed -i "" "s/version \".*\"/version \"$version_number\"/g" Cask/chilikeys.rb
+sed -i "" "s/version \".*\"/version \"$version_number\"/g" Casks/chilikeys.rb
 
 # Commit the changes to the cask file
-git add Cask/chilikeys.rb
+git add Casks/chilikeys.rb
 git commit -m "Update cask version to $version_number"
 
 # Add the new tag
