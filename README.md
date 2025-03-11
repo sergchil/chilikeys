@@ -1,15 +1,26 @@
-# chilikeys
-Armenian and Russian phonetic keyboard layout (KDWin style) for Mac OS 
+# ChiliKeys
 
-# How to use 
-* clone the repository
-* double click to **install**
-* follow the instructions on the screen
-* Enjoy !
+Armenian and Russian phonetic keyboard layout (KDWin style) for macOS.
 
-### notes
-* create a script to generate a release on every release tag 
-* create a script to bundle the resources in the apple script
-* change the installer icon
-* record the vide tutorial
+## Installation
 
+### DMG
+
+1. Go to the [Releases page](https://github.com/sergchil/chilikeys/releases)
+2. Download the latest version of the `.dmg` Apple Disk Image
+3. Double-click on the `.dmg` file to mount it
+4. Drag the contained files into `~/Library/Keyboard\ Layouts/`
+
+### Homebrew Cask
+
+```shell
+brew tap sergchil/chilikeys
+brew install chilikeys
+```
+
+To uninstall **ChiliKeys**, run:
+
+```shell
+brew uninstall chilikeys
+brew untap serchil/chilikeys
+```
