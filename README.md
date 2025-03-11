@@ -14,7 +14,7 @@ Armenian and Russian phonetic keyboard layout (KDWin style) for macOS.
 ### Homebrew Cask
 
 ```shell
-brew tap sergchil/chilikeys
+brew tap sergchil/chilikeys https://github.com/sergchil/chilikeys
 brew install chilikeys
 ```
 
@@ -22,5 +22,5 @@ To uninstall **ChiliKeys**, run:
 
 ```shell
 brew uninstall chilikeys
-brew untap serchil/chilikeys
+brew untap sergchil/chilikeys https://github.com/sergchil/chilikeys
 ```
