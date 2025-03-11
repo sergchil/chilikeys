@@ -1,5 +1,5 @@
-# ChiliKeys 🎮
-> Armenian and Russian phonetic keyboard layouts for macOS, inspired by KDWin
+# ChiliKeys
+### Armenian and Russian phonetic keyboard layouts for macOS, inspired by KDWin
 
 ![Keyboard Layouts](assets/keyboards.png)
 
