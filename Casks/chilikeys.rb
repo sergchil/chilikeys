@@ -13,10 +13,10 @@ cask "chilikeys" do
   end
 
   artifact "chilikeys_armenian.bundle",
-           target: "#{Dir.home}/Library/Keyboard Layouts/chilikeys_armenian.bundle"
+           target: "~/Library/Keyboard Layouts/chilikeys_armenian.bundle"
 
   artifact "chilikeys_russian.bundle",
-           target: "#{Dir.home}/Library/Keyboard Layouts/chilikeys_russian.bundle"
+           target: "~/Library/Keyboard Layouts/chilikeys_russian.bundle"
 
   zap trash: [
     "~/Library/Keyboard Layouts/chilikeys_armenian.bundle",

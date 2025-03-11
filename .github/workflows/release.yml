@@ -16,12 +16,11 @@ jobs:
           brew install create-dmg
       - name: Create Layouts Archive
         run: |
-          zip ChiliKeys-${{ github.ref_name }}.zip layouts/ChiliKeys.icns layouts/ChiliKeys.keylayout
+          zip -r ChiliKeys-${{ github.ref_name }}.zip layouts/chilikeys_armenian.bundle layouts/chilikeys_russian.bundle
       - name: Create DMG
         run: |
           create-dmg \
           --volname 'ChiliKeys Installer' \
-          --volicon 'layouts/ChiliKeys.icns' \
           --window-size 500 300 \
           'ChiliKeys Installer ${{ github.ref_name }}.dmg' \
           layouts/
@@ -30,11 +29,10 @@ jobs:
         run: |
           file=ChiliKeys-${{ github.ref_name }}.zip
           hash=$(shasum -a 256 "$file" | cut -d ' ' -f 1)
-
           echo "sha256=$hash" >> $GITHUB_OUTPUT
       - name: Update Cask File
         run: |
-          sed -i'' -e 's/sha256 ""/sha256 "${{ steps.calculate_sha.outputs.sha256 }}"/g' Cask/chilikeys.rb
+          sed -i'' -e "s/sha256 \".*\"/sha256 \"${{ steps.calculate_sha.outputs.sha256 }}\"/g" Casks/chilikeys.rb
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
@@ -44,6 +42,6 @@ jobs:
       - name: Commit Cask File
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: Cask/chilikeys.rb
+          file_pattern: Casks/chilikeys.rb
           commit_message: Update Cask file for ${{ github.ref_name}}
           branch: main
