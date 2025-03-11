@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIconFile</key>
+	<string>RU</string>
+	<key>CFBundleIdentifier</key>
+	<string>org.sil.ukelele.keyboardlayout.chilikeys_russian</string>
+	<key>CFBundleName</key>
+	<string>chilikeys_russian</string>
+	<key>CFBundleVersion</key>
+	<string></string>
+	<key>KLInfo_RU</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISIconIsTemplate</key>
+		<false/>
+		<key>TISInputSourceID</key>
+		<string>org.sil.ukelele.keyboardlayout.chilikeys_russian.ru</string>
+		<key>TISIntendedLanguage</key>
+		<string>ru</string>
+	</dict>
+</dict>
+</plist>
