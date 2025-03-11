@@ -1,5 +1,5 @@
 cask "chilikeys" do
-  version "2.0.8"
+  version "2.0.9"
   sha256 "83fd34012dd9a912df50937e008eaed62efe7979228a5cfe9e022034a0293b5f"
 
   url "https://github.com/sergchil/chilikeys/releases/download/v#{version}/ChiliKeys-v#{version}.zip"
