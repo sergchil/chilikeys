@@ -12,10 +12,10 @@ cask "chilikeys" do
     strategy :github_latest
   end
 
-  artifact "chilikeys_armenian.bundle",
+  artifact "layouts/chilikeys_armenian.bundle",
            target: "~/Library/Keyboard Layouts/chilikeys_armenian.bundle"
 
-  artifact "chilikeys_russian.bundle",
+  artifact "layouts/chilikeys_russian.bundle",
            target: "~/Library/Keyboard Layouts/chilikeys_russian.bundle"
 
   zap trash: [
