@@ -34,7 +34,7 @@ jobs:
           echo "sha256=$hash" >> $GITHUB_OUTPUT
       - name: Update Cask File
         run: |
-          sed -i'' -e 's/sha256 ""/sha256 "${{ steps.calculate_sha.outputs.sha256 }}"/g' Formula/chilikeys.rb
+          sed -i'' -e 's/sha256 ""/sha256 "${{ steps.calculate_sha.outputs.sha256 }}"/g' Cask/chilikeys.rb
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
@@ -44,6 +44,6 @@ jobs:
       - name: Commit Cask File
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          file_pattern: Formula/chilikeys.rb
+          file_pattern: Cask/chilikeys.rb
           commit_message: Update Cask file for ${{ github.ref_name}}
           branch: main
